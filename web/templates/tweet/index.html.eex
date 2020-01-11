@@ -1,0 +1,28 @@
+<h2>Listing tweets</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>User</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for tweet <- @tweets do %>
+    <tr>
+      <td><%= tweet.content %></td>
+      <td><%= tweet.user_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: tweet_path(@conn, :show, tweet), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: tweet_path(@conn, :edit, tweet), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: tweet_path(@conn, :delete, tweet), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New tweet", to: tweet_path(@conn, :new) %>

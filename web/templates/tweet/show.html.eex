@@ -1,0 +1,2 @@
+<%= @tweet.content %>
+<button type="button" name="button">Ping!</button>
